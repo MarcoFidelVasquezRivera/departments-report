@@ -8,11 +8,11 @@ namespace departments_report
 {
     class Municipio
     {
-        public int CodigoDane { get; set; }
+        public string CodigoDane { get; set; }
         public string Nombre  { get; set; }
         public string Tipo { get; set; }
 
-        public Municipio(int codigoDane, string nombre, string tipo) 
+        public Municipio(string codigoDane, string nombre, string tipo) 
         {
             CodigoDane = codigoDane;
             Nombre = nombre;
