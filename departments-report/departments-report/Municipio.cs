@@ -8,15 +8,15 @@ namespace departments_report
 {
     class Municipio
     {
-        public string CodigoDane { get; set; }
-        public string Nombre  { get; set; }
-        public string Tipo { get; set; }
+        public string DaneCode { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
 
-        public Municipio(string codigoDane, string nombre, string tipo) 
+        public Municipio(string daneCode, string name, string type) 
         {
-            CodigoDane = codigoDane;
-            Nombre = nombre;
-            Tipo = tipo;
+            DaneCode = daneCode;
+            Name = name;
+            Type = type;
         
         }
     }
