@@ -11,10 +11,10 @@ namespace departments_report
     class Pais
     {
         public Dictionary<string, Departamento> Departamentos { get; set; }
-        public DataTable DataTable { get; set;} 
+        public DataTable DataTable { get; set; }
 
 
-        public Pais() 
+        public Pais()
         {
             Departamentos = new Dictionary<string, Departamento>();
             DataTable = new DataTable();
@@ -29,15 +29,14 @@ namespace departments_report
             generateDataTable(headers);
             line = reader.ReadLine();
 
-            while (line != null && !line.Equals("")) 
+            while (line != null && !line.Equals(""))
             {
-                Console.WriteLine(line);
                 string[] data = line.Split(',');
 
-                
+
                 if (!Departamentos.ContainsKey(data[0]))
                 {
-                    Departamentos.Add(data[0], new Departamento(data[0], data[2]));
+                    Departamentos.Add(data[0], new Departamento(data[2], data[0]));
                 }
 
                 Municipio toAdd = new Municipio(data[1], data[3], data[4]);
@@ -61,13 +60,13 @@ namespace departments_report
 
         public void generateDataTable(String[] headers)
         {
-            foreach (string word in headers) 
+            foreach (string word in headers)
             {
                 DataTable.Columns.Add(word);
             }
         }
 
-        public Municipio SearchMunicipio(string code) 
+        public string SearchMunicipio(string code) 
         {
             foreach (KeyValuePair<string, Departamento> Dpt in Departamentos) 
             {
@@ -78,7 +77,9 @@ namespace departments_report
                 {
                     if (mcp.DaneCode.Equals(code)) 
                     {
-                        return mcp;
+                        string toReturn = mcp.Name + "," + mcp.DaneCode + "," + mcp.Type + "," + Dpt.Value.Name + "," + Dpt.Key;
+
+                        return toReturn;
                     
                     }            
                 }

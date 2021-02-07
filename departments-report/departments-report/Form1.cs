@@ -40,7 +40,51 @@ namespace departments_report
                 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if (toSearch.Text != null)
+            {
+                string code = toSearch.Text;
+                string found = country.SearchMunicipio(code);
+
+                if (found != null)
+                {
+                    string[] replace = found.Split(',');
+                    nombreMunicipio.Text = replace[0];
+                    codeM.Text = replace[1];
+                    tipoM.Text = replace[2];
+                    nombreD.Text = replace[3];
+                    codigoD.Text = replace[4];
+                }
+                else 
+                {
+                    nombreMunicipio.Text = "El codigo es incorrecto";
+                
+                
+                
+                }
+            }
+            else 
+            {
+
+                Console.WriteLine( "¯|_(ツ)_|¯");
+            
+            }
+            
+
+
+
+
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
