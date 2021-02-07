@@ -87,5 +87,17 @@ namespace departments_report
             }
             return null;
         }
+
+        public Dictionary<string, int> info() 
+        {
+            Dictionary<string, int> info = new Dictionary<string, int>();
+
+            foreach(KeyValuePair<string, Departamento> dp in Departamentos)
+            {
+                info.Add(dp.Value.Name, dp.Value.Municipios.Count);
+            }
+
+            return info;
+        }
     }
 }
