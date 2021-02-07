@@ -24,6 +24,9 @@ namespace departments_report
         {
             var reader = new StreamReader(File.OpenRead(@path));
             string line = reader.ReadLine();
+
+            string[] headers = line.Split(',');
+            generateDataTable(headers);
             line = reader.ReadLine();
 
             while (line != null && !line.Equals("")) 
@@ -39,15 +42,29 @@ namespace departments_report
 
                 Municipio toAdd = new Municipio(data[1], data[3], data[4]);
                 Departamentos[data[0]].Municipios.Add(toAdd);
+
+                //here the data is loaded to the datatable
+                DataRow dr = DataTable.NewRow();
+                int columnIndex = 0;
+                foreach (string headerWord in headers)
+                {
+                    dr[headerWord] = data[columnIndex++];
+                }
+                DataTable.Rows.Add(dr);
+
+
                 line = reader.ReadLine();
             }
 
             reader.Close();
         }
 
-        public void generateDataTable()
+        public void generateDataTable(String[] headers)
         {
-
+            foreach (string word in headers) 
+            {
+                DataTable.Columns.Add(word);
+            }
         }
 
         public Municipio SearchMunicipio(string code) 

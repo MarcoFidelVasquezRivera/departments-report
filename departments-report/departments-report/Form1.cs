@@ -35,7 +35,7 @@ namespace departments_report
 
                 country.ReadFile(selectedFileName);
 
-
+                dataGridView1.DataSource = country.DataTable;
             }
                 
         }
