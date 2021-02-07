@@ -4,62 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Data;
 
 namespace departments_report
 {
     class Pais
     {
-        public List<Departamento> Departamentos { get; set; }
+        public Dictionary<string, Departamento> Departamentos { get; set; }
+        public DataTable DataTable { get; set;} 
 
 
         public Pais() 
-        { 
-
+        {
+            Departamentos = new Dictionary<string, Departamento>();
+            DataTable = new DataTable();
         }
 
         public void ReadFile(string path)
         {
             var reader = new StreamReader(File.OpenRead(@path));
             string line = reader.ReadLine();
+            line = reader.ReadLine();
 
-            while(line != null) 
+            while (line != null && !line.Equals("")) 
             {
+                Console.WriteLine(line);
                 string[] data = line.Split(',');
-                //CÃ³digo Departamento,CÃ³digo Municipio,Nombre Departamento,Nombre Municipio,Tipo: Municipio / Isla / Ãrea no municipalizada
-                foreach(Departamento dpt in Departamentos) 
+
+                
+                if (!Departamentos.ContainsKey(data[0]))
                 {
-                    if (!(dpt.Code.Equals(data[0]))) 
-                    {
-                        Departamentos.Add(new Departamento(data[0], data[2]));
-                    }
-                
-                
+                    Departamentos.Add(data[0], new Departamento(data[0], data[2]));
                 }
 
                 Municipio toAdd = new Municipio(data[1], data[3], data[4]);
-                
-                foreach(Departamento dpt in Departamentos) 
-                {
-                    if (dpt.Code.Equals(data[0])) 
-                    {
-
-                        dpt.Municipios.Add(toAdd);        
-                    }
-                }
-
+                Departamentos[data[0]].Municipios.Add(toAdd);
+                line = reader.ReadLine();
             }
 
+            reader.Close();
+        }
 
+        public void generateDataTable()
+        {
 
         }
 
-
         public Municipio SearchMunicipio(string code) 
         {
-            foreach (Departamento Dpt in Departamentos) 
+            foreach (KeyValuePair<string, Departamento> Dpt in Departamentos) 
             {
 
-                List<Municipio> Municipios = Dpt.Municipios;
+                List<Municipio> Municipios = Dpt.Value.Municipios;
+
                 foreach(Municipio mcp in Municipios) 
                 {
                     if (mcp.DaneCode.Equals(code)) 

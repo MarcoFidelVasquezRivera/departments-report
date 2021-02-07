@@ -1,0 +1,10 @@
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\bin\Debug\departments-report.exe.config
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\bin\Debug\departments-report.exe
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\bin\Debug\departments-report.pdb
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments-report.csprojAssemblyReference.cache
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments_report.Form1.resources
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments_report.Properties.Resources.resources
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments-report.csproj.GenerateResource.cache
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments-report.csproj.CoreCompileInputs.cache
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments-report.exe
+C:\Users\prestamo\Desktop\programas c#\departments-report\departments-report\departments-report\obj\Debug\departments-report.pdb
